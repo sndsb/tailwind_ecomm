@@ -4,3 +4,26 @@ export const navLinks = [
     { href: "#products", label: "Products" },
     { href: "#contact-us", label: "Contact Us" },
 ];
+
+
+export const statistics = [
+    { value: '1k+', label: 'Brands' },
+    { value: '500+', label: 'Shops' },
+    { value: '250k+', label: 'Customers' },
+];
+
+
+export const shoes = [
+    {
+        thumbnail: thumbnailShoe1,
+        bigShoe: bigShoe1,
+    },
+    {
+        thumbnail: thumbnailShoe2,
+        bigShoe: bigShoe2,
+    },
+    {
+        thumbnail: thumbnailShoe3,
+        bigShoe: bigShoe3,
+    },
+];
