@@ -2,42 +2,42 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { homeService } from "../actions/home-action";
 
 const initialState = {
-  productData: [],
+  siteSettingData: {},
   isLoading: true,
 };
 
-export const getProductsData = createAsyncThunk(
+export const getSetiteSettingData = createAsyncThunk(
   "get_product_data",
   async (thunkAPI) => {
     try {
-      return await homeService.getProducts();
+      return await homeService.getSiteSetting();
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
-export const productSlice = createSlice({
-  name: "product",
+export const siteSettingSlice = createSlice({
+  name: "siteSetting",
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       // eslint-disable-next-line no-unused-vars
-      .addCase(getProductsData.pending, (state) => {
+      .addCase(getSetiteSettingData.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getProductsData.fulfilled, (state, action) => {
+      .addCase(getSetiteSettingData.fulfilled, (state, siteAction) => {
         state.isLoading = false;
-        state.productData = action?.payload?.data?.products;
-        
+        state.siteSettingData = siteAction.payload?.data;
+        console.log(siteAction.payload.data)
       })
-      .addCase(getProductsData.rejected, (state) => {
+      .addCase(getSetiteSettingData.rejected, (state) => {
         state.isLoading = false;
       });
   },
 });
 
-const productReducer = productSlice.reducer;
+const siteSettingReducer = siteSettingSlice.reducer;
 
-export default productReducer;
+export default siteSettingReducer;

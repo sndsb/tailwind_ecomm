@@ -1,6 +1,10 @@
 import { headerLogo } from '../assets/images'
 import { hamburger } from '../assets/icons'
 import { navLinks } from '../constants'
+import { useEffect } from 'react';
+import { getSetiteSettingData } from '../reducx/reducer/siteSettingSlice';
+import { useDispatch } from 'react-redux';
+import { siteSettingList } from '../reducx/selector';
 const Nav = () => {
     return (
         <header className="py-8 absolute z-10 w-full">

@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import PopularProductCard from "../components/PopularProductCard"
-import { products } from "../constants"
 import { useEffect } from "react";
 import { getProductsData } from "../reducx/reducer/homeSlice";
 import { productList } from "../reducx/selector";
@@ -11,7 +10,7 @@ const PopularProduct = () => {
 
   useEffect(() => {
     dispatch(getProductsData());
-  }, [dispatch]);
+  }, []);
 
   const {productData,isLoading} = useSelector(productList);
 
@@ -27,9 +26,9 @@ const PopularProduct = () => {
         </h2>
         <p className="max-lg:max-w-lg mt-2 font-montserrat text-slate-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut inventore veritatis voluptas tenetur tempore, quo, cum, minus culpa excepturi ratione temporibus laboriosam reiciendis sequi nam natus error quisquam obcaecati saepe!</p>
       </div>
-      {console.log(productData)}
+      
       <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
-        {productData.map((product) => (
+        {productData?.map((product) => (
           
           <PopularProductCard key={product.title} {...product} />
         ))}

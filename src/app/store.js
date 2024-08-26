@@ -18,7 +18,7 @@ import { rootReducer } from "../reducx";
 const persistConfig = {
   key: "root",
   storage,
-  whiteList: ["product", "auth"],
+  whiteList: ["product", "siteSetting"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
