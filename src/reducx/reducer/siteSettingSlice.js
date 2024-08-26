@@ -30,7 +30,6 @@ export const siteSettingSlice = createSlice({
       .addCase(getSetiteSettingData.fulfilled, (state, siteAction) => {
         state.isLoading = false;
         state.siteSettingData = siteAction.payload?.data;
-        console.log(siteAction.payload.data)
       })
       .addCase(getSetiteSettingData.rejected, (state) => {
         state.isLoading = false;
