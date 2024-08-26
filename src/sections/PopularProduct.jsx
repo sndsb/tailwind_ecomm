@@ -10,7 +10,7 @@ const PopularProduct = () => {
 
   useEffect(() => {
     dispatch(getProductsData());
-  }, []);
+  }, [dispatch]);
 
   const {productData,isLoading} = useSelector(productList);
 

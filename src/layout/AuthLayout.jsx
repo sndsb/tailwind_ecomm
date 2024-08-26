@@ -4,9 +4,10 @@ import Nav from '../components/Nav';
 
 const AuthLayout = () => {
   return (
-    <Nav>
-     <Outlet />
-     </Nav>
+    <>
+      <Nav />
+      <Outlet />
+    </>
   )
 }
 

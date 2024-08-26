@@ -11,7 +11,7 @@ const Footer = () => {
 
     useEffect(() => {
       dispatch(getSetiteSettingData());
-    }, []);
+    }, [dispatch]);
   
     const {siteSettingData,isLoading} = useSelector(siteSettingList);
     
