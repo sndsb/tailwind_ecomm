@@ -14,6 +14,7 @@ const Footer = () => {
     }, []);
   
     const {siteSettingData,isLoading} = useSelector(siteSettingList);
+    
   return (
     <footer className='max-contaier'>
         <div className='flex justify-between items-start max-lg:flex-col'>

@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const getSetiteSettingData = createAsyncThunk(
-  "get_product_data",
+  "get_site_setting_data",
   async (thunkAPI) => {
     try {
       return await homeService.getSiteSetting();

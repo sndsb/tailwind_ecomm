@@ -7,16 +7,16 @@ const Nav = () => {
     return (
         <header className="py-8 absolute z-10 w-full">
             <nav className='flex justify-between items-center max-container'>
-                <Link to={paths.home}>
+                <Link to={paths.home.home}>
                     <img src={headerLogo} alt='LOGO' width={130} height={29} />
                 </Link>
 
                 <ul className='flex-1 flex justify-center items-center gap-16 max-lg:hidden'>
-                    {navLinks.map((item) => (
+                    {navLinks?.map((item) => (
                         <li key={item.label}>
-                            <a className='font-montserrat leading-normal text-lg text-slate-grey'>
+                            <Link to={item?.href} className='font-montserrat leading-normal text-lg text-slate-grey'>
                                 {item.label}
-                            </a>
+                            </Link>
                         </li>
                     ))}
                      <li key='login'>

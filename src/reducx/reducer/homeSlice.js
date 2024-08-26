@@ -29,8 +29,9 @@ export const productSlice = createSlice({
       })
       .addCase(getProductsData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.productData = action?.payload?.data?.products;
-        
+        const products = action?.payload?.data?.products || [];
+        state.productData = products.slice(-5);
+
       })
       .addCase(getProductsData.rejected, (state) => {
         state.isLoading = false;
