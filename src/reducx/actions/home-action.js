@@ -36,16 +36,16 @@ const login = async (data) => {
     
     console.log(data + 'login data')
     const response = await axios.post('https://apimasterv3.leadwissr.com/ipa/login_with_otp', data);
-    console.log('login response -->' + response)
+    console.log(response?.data)
     if (response.status === 200) {
-      toast.success(response?.message || "Login Successfully");
+      toast.success(response?.data?.message);
     } else {
       toast.error(response?.error?.message);
     }
     return response.data;
   } catch (error) {
-   
-    toast.error('testttt');
+    
+    toast.error(error?.response?.data?.message.email);
     throw error;
   }
 };
