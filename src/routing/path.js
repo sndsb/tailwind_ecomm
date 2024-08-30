@@ -9,6 +9,7 @@ const ROOTS = {
     auth: {
       login: `${ROOTS.AUTH}/login`,
       signUp: `${ROOTS.AUTH}/sign-up`,
+      otp:`${ROOTS.AUTH}/otp`
     },
   
     home: {
