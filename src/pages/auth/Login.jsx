@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { loginUser } from '../../reducx/reducer/authSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { paths } from '../../routing/path';
 
 const validationSchema = yup.object({
   email: yup
@@ -31,7 +32,7 @@ const Login = () => {
       const resultAction = await dispatch(loginUser(data));
 
       if (loginUser.fulfilled.match(resultAction)) {
-        navigate('auth/otp'); 
+        navigate(paths.auth.otp); 
       }
     } catch (error) {
       console.error('Login failed:', error);
