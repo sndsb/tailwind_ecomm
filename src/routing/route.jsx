@@ -25,6 +25,10 @@ function AppRoutes() {
           path: "sign-up",
           element: <Signup />,
         },
+        {
+          path: "otp",
+          element: <Signup />,
+        },
       ],
     },
     // {

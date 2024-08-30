@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { loginUser } from '../../reducx/reducer/authSlice';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { paths } from '../../routing/path';
 
 const validationSchema = yup.object({
   email: yup
@@ -14,7 +16,8 @@ const validationSchema = yup.object({
 
 const Login = () => {
   const dispatch = useDispatch();
-  
+  const navigate = useNavigate(); 
+
   const {
     handleSubmit,
     register,
@@ -23,9 +26,17 @@ const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
 
-    dispatch(loginUser(data));
+    try {
+      const resultAction = await dispatch(loginUser(data));
+
+      if (loginUser.fulfilled.match(resultAction)) {
+        navigate(paths.auth.otp); 
+      }
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
   };
 
   return (
@@ -33,7 +44,7 @@ const Login = () => {
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-          Email
+            Email
           </label>
           <input
             {...register('email')}
@@ -52,7 +63,7 @@ const Login = () => {
             type="submit"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Siging in' : 'Sign in' }
+            {isSubmitting ? 'Siging in' : 'Sign in'}
           </button>
         </div>
       </form>
