@@ -3,6 +3,7 @@ import BaseLayout from "../layout/BaseLayout";
 import AuthLayout from "../layout/AuthLayout";
 import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
+import Otp from "../pages/auth/Otp";
 
 
 function AppRoutes() {
@@ -27,7 +28,7 @@ function AppRoutes() {
         },
         {
           path: "otp",
-          element: <Signup />,
+          element: <Otp />,
         },
       ],
     },
