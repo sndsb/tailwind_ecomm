@@ -1,6 +1,7 @@
 import axios from "axios";
 import base_url from "../../utils/base_url";
-// import { getConfigWithToken } from "../../../utils/config";
+import { toast } from 'react-toastify';
+
 
 // Get All bank details
 const getProducts = async () => {
@@ -30,7 +31,28 @@ const getSiteSetting = async () => {
   }
 };
 
+const login = async (data) => {
+  try {
+    
+    console.log(data + 'login data')
+    const response = await axios.post('https://apimasterv3.leadwissr.com/ipa/login_with_otp', data);
+    console.log('login response -->' + response)
+    if (response.status === 200) {
+      toast.success(response?.message || "Login Successfully");
+    } else {
+      toast.error(response?.error?.message);
+    }
+    return response.data;
+  } catch (error) {
+   
+    toast.error('testttt');
+    throw error;
+  }
+};
+
+
 export const homeService = {
     getProducts,
-    getSiteSetting
+    getSiteSetting,
+    login
 };

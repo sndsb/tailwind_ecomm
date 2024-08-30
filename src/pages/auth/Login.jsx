@@ -2,15 +2,19 @@ import React from 'react'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { loginUser } from '../../reducx/reducer/authSlice';
+import { useDispatch } from 'react-redux';
 
 const validationSchema = yup.object({
-  phone_number: yup
+  email: yup
     .string()
-    .required("Phone number is required")
-    .matches(/^[0-9]{8,12}$/, "Phone number must be between 8 and 12 digits")
+    .email()
+    .required("Email field is required")
 });
 
 const Login = () => {
+  const dispatch = useDispatch();
+  
   const {
     handleSubmit,
     register,
@@ -20,8 +24,8 @@ const Login = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
-    
+
+    dispatch(loginUser(data));
   };
 
   return (
@@ -32,13 +36,13 @@ const Login = () => {
             Phone Number
           </label>
           <input
-            {...register('phone_number')}
+            {...register('email')}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="number"
+            type="text"
             placeholder="Phone Number"
           />
-          {errors.phone_number && (
-            <p className="text-red-500 text-xs italic">{errors.phone_number.message}</p>
+          {errors.email && (
+            <p className="text-red-500 text-xs italic">{errors.email.message}</p>
           )}
         </div>
 
